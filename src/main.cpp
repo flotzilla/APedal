@@ -4,7 +4,7 @@
 
 // #define DEBUG;
 
-const int pin = 10;
+const int pin = A2;
 unsigned const int delayVal = 1000;
 
 unsigned long lastUpdateTime;
@@ -24,7 +24,7 @@ void handlePress()
   Serial.println(val);
   #endif
 
-  if ((int) val == HIGH){
+  if ((int) val == LOW){
     unsigned long currentMills = millis();
 
     if ( (currentMills - lastUpdateTime) > delayVal){
@@ -34,7 +34,7 @@ void handlePress()
       Serial.println("pressed");
       #endif
 
-      Keyboard.press('i');
+      Keyboard.press(KEY_ESC);
       Keyboard.releaseAll();
     }
   }
